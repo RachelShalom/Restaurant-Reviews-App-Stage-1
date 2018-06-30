@@ -5,7 +5,7 @@ var newMap
 var markers = []
     //register the service worker
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/Restaurant-Reviews-App-Stage-1/js/sw.js').then(function(reg) {
+    navigator.serviceWorker.register('/js/sw.js').then(function(reg) {
 
         if (reg.installing) {
             console.log('Service worker installing');
@@ -178,6 +178,8 @@ createRestaurantHTML = (restaurant) => {
     const image = document.createElement('img');
     image.className = 'restaurant-img';
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    //adding al to all images
+    image.alt = restaurant.name + ' ' + restaurant.cuisine_type + ' restaurant';
     li.append(image);
 
     const name = document.createElement('h1');

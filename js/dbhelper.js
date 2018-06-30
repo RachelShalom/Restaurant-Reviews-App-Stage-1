@@ -9,7 +9,7 @@ class DBHelper {
      */
     static get DATABASE_URL() {
         const port = 3001 // Change this to your server port
-        return `http://localhost:${port}/Restaurant-Reviews-App-Stage-1/data/restaurants.json`;
+        return `http://localhost:${port}/data/restaurants.json`;
     }
 
     /**
@@ -151,7 +151,7 @@ class DBHelper {
      * /I added the path:/Restaurant-Reviews-App-Stage-1/
      */
     static imageUrlForRestaurant(restaurant) {
-        return (`/Restaurant-Reviews-App-Stage-1/img/${restaurant.photograph}`);
+        return (`/img/${restaurant.photograph}`);
     }
 
     /**
