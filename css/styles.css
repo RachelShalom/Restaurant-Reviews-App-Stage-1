@@ -132,6 +132,8 @@ nav h1 a {
 
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
+  display:grid;
+  grid-template-columns: auto auto auto auto;
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;

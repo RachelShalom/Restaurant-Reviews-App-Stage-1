@@ -10,14 +10,14 @@ var urlsToCache = ['/', '/css/styles.css',
     '/js/dbhelper.js', '/js/restaurant_info.js',
     'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js', 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
     'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon.png', 'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon-2x.png',
-    'https://unpkg.com/leaflet@1.3.1/dist/images/marker-shadow.png'
+    'https://unpkg.com/leaflet@1.3.1/dist/images/marker-shadow.png','https://leafletjs.com/reference-1.3.0.html#marker'
 
 
-]; ////////
+]; /////
 //open a cache whiile installing
 self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open('v2').then(function(cache) {
+        caches.open('v1').then(function(cache) {
             return cache.addAll(urlsToCache);
         }).catch(function(e) { console.log("cach did not work: " + e) })
     )
