@@ -1,0 +1,27 @@
+@media only screen and (max-width: 800px) {
+    #maincontent {
+        background-color: #f0eaea;
+        min-height: 100%;
+        display:grid;
+        grid-template-areas:
+        'map map map map map map'
+        'restaurant restaurant reviews reviews';
+        grid-gap: 10px;
+
+      }
+
+    .inside #map-container {
+        grid-area:map;
+        background: blue none repeat scroll 0 0;
+        
+      }
+      #restaurant-container{
+        grid-area:restaurant;
+      }
+      #reviews-container {
+        padding: 30px 40px 80px;
+        grid-area:reviews;
+      }
+
+
+}
