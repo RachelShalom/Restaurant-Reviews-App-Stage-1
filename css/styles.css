@@ -201,7 +201,6 @@ nav h1 a {
 }
 
 .inside #map-container {
-  grid-area:map;
   background: blue none repeat scroll 0 0;
   height: 87%;
   position: fixed;
@@ -254,12 +253,8 @@ nav h1 a {
   padding: 140px 40px 30px;
   width: 50%;
 }
-#restaurant-container{
-  grid-area:restaurant;
-}
 #reviews-container {
   padding: 30px 40px 80px;
-  grid-area:reviews;
 }
 #reviews-container h2 {
   color: #f58500;

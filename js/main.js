@@ -4,6 +4,7 @@ let restaurants,
 var newMap
 var markers = []
     //register the service worker
+    
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/js/sw.js').then(function(reg) {
 

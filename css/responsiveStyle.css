@@ -1,26 +1,40 @@
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 850px) {
+  html {
+   margin: 0px;
+   height: 100%;
+   width: 100%;
+}
+
     #maincontent {
         background-color: #f0eaea;
         min-height: 100%;
-        display:grid;
-        grid-template-areas:
-        'map map map map map map'
-        'restaurant restaurant reviews reviews';
-        grid-gap: 10px;
-
       }
+      nav h1 {
+        padding: 10px 40px 16px;
+    }
+    #breadcrumb {
+      width: 100%;
+  }
 
     .inside #map-container {
-        grid-area:map;
-        background: blue none repeat scroll 0 0;
-        
+      background: blue none repeat scroll 0 0;
+      height: 360px;
+      position: relative;
+      top: 130px;
+      width: 100%;
       }
+
+
       #restaurant-container{
-        grid-area:restaurant;
+        width:100%;
+        position: relative;
+        top: 50px;
+    
       }
       #reviews-container {
-        padding: 30px 40px 80px;
-        grid-area:reviews;
+        position: relative;
+        top: 20px;
+    
       }
 
 
