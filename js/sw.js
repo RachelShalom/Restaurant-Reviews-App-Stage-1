@@ -1,3 +1,4 @@
+const staticCacheName = 'review-cache-v1';
 //this is all the urls to save in the cache
 var urlsToCache = ['/', '/css/styles.css',
     '/img/1.jpg', '/img/2.jpg',
@@ -17,11 +18,27 @@ var urlsToCache = ['/', '/css/styles.css',
 //open a cache whiile installing
 self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open('v1').then(function(cache) {
+        caches.open(staticCacheName).then(function(cache) {
             return cache.addAll(urlsToCache);
         }).catch(function(e) { console.log("cach did not work: " + e) })
     )
 });
+self.addEventListener('activate', function (event) {
+    event.waitUntil(
+        caches.keys()
+          .then( (cacheNames) => {
+            return Promise.all(
+                cacheNames.filter(function (cacheName) {
+                    return cacheName.startsWith('review-') &&
+                        cacheName != staticCacheName;
+                }).map(function (cacheName) {
+                    return caches.delete(cacheName);
+                })
+            );
+          })
+    );
+});
+
 //return response from the cache, if there is an error then get the resuwst from the network
 self.addEventListener('fetch', function(event) {
     caches.match(event.request).then(function(response) {
