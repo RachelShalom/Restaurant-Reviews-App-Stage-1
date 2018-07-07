@@ -1,4 +1,4 @@
-const staticCacheName = 'review-cache-v3';
+const staticCacheName = 'review-cache-v1';
 //this is all the urls to save in the cache
 var urlsToCache = ['/', '/css/styles.css',
     '/img/1.jpg', '/img/2.jpg',
