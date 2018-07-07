@@ -4,21 +4,19 @@ let restaurants,
 var newMap
 var markers = []
     //register the service worker
-    
+
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/js/sw.js').then(function(reg) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/js/sw.js').then(function(reg) {
 
-        if (reg.installing) {
-            console.log('Service worker installing');
-        } else if (reg.waiting) {
-            console.log('Service worker installed');
-        } else if (reg.active) {
-            console.log('Service worker active');
-        }
+            if (reg.active) {
+                console.log('Service worker active');
+            }
 
-    }).catch(function(error) {
-        // registration failed
-        console.log('Registration failed with ' + error);
+        }).catch(function(error) {
+            // registration failed
+            console.log('Registration failed with ' + error);
+        });
     });
 }
 
@@ -90,23 +88,23 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
  * Initialize leaflet map, called from HTML.
  */
 initMap = () => {
-        self.newMap = L.map('map', {
-            center: [40.722216, -73.987501],
-            zoom: 12,
-            scrollWheelZoom: false
-        });
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token=pk.eyJ1IjoicmFjaGVsc2hhbG9tIiwiYSI6ImNqaXp3bG1hejBhc2MzcW1odmtqbTQ3Y3IifQ.ygRfsJVddbhT65JnLaBMqA', {
-            mapboxToken: '<your MAPBOX API KEY HERE>',
-            maxZoom: 18,
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox.streets'
-        }).addTo(newMap);
+    self.newMap = L.map('map', {
+        center: [40.722216, -73.987501],
+        zoom: 12,
+        scrollWheelZoom: false
+    });
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token=pk.eyJ1IjoicmFjaGVsc2hhbG9tIiwiYSI6ImNqaXp3bG1hejBhc2MzcW1odmtqbTQ3Y3IifQ.ygRfsJVddbhT65JnLaBMqA', {
+        mapboxToken: '<your MAPBOX API KEY HERE>',
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox.streets'
+    }).addTo(newMap);
 
-        updateRestaurants();
-    }
-   
+    updateRestaurants();
+}
+
 updateRestaurants = () => {
     const cSelect = document.getElementById('cuisines-select');
     const nSelect = document.getElementById('neighborhoods-select');
@@ -160,7 +158,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
     const li = document.createElement('div');
-    li.setAttribute("class","restaurant-item");
+    li.setAttribute("class", "restaurant-item");
 
     const image = document.createElement('img');
     image.className = 'restaurant-img';
@@ -193,16 +191,15 @@ createRestaurantHTML = (restaurant) => {
  * Add markers for current restaurants to the map.
  */
 addMarkersToMap = (restaurants = self.restaurants) => {
-        restaurants.forEach(restaurant => {
-            // Add marker to the map
-            const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
-            marker.on("click", onClick);
+    restaurants.forEach(restaurant => {
+        // Add marker to the map
+        const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
+        marker.on("click", onClick);
 
-            function onClick() {
-                window.location.href = marker.options.url;
-            }
-            self.markers.push(marker);
-        });
+        function onClick() {
+            window.location.href = marker.options.url;
+        }
+        self.markers.push(marker);
+    });
 
-    }
-  
+}

@@ -1,4 +1,4 @@
-const staticCacheName = 'review-cache-v1';
+const staticCacheName = 'review-cache-v3';
 //this is all the urls to save in the cache
 var urlsToCache = ['/', '/css/styles.css',
     '/img/1.jpg', '/img/2.jpg',
@@ -11,31 +11,31 @@ var urlsToCache = ['/', '/css/styles.css',
     '/js/dbhelper.js', '/js/restaurant_info.js',
     'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js', 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
     'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon.png', 'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon-2x.png',
-    'https://unpkg.com/leaflet@1.3.1/dist/images/marker-shadow.png','https://leafletjs.com/reference-1.3.0.html#marker'
+    'https://unpkg.com/leaflet@1.3.1/dist/images/marker-shadow.png', 'https://leafletjs.com/reference-1.3.0.html#marker'
 
 
-]; /////
+]; /////////////
 //open a cache whiile installing
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function(cache) {
             return cache.addAll(urlsToCache);
-        }).catch(function(e) { console.log("cach did not work: " + e) })
+        }).catch(function(e) { console.log("cache did not work: " + e) })
     )
 });
-self.addEventListener('activate', function (event) {
+self.addEventListener('activate', function(event) {
     event.waitUntil(
         caches.keys()
-          .then( (cacheNames) => {
+        .then((cacheNames) => {
             return Promise.all(
-                cacheNames.filter(function (cacheName) {
+                cacheNames.filter(function(cacheName) {
                     return cacheName.startsWith('review-') &&
                         cacheName != staticCacheName;
-                }).map(function (cacheName) {
+                }).map(function(cacheName) {
                     return caches.delete(cacheName);
                 })
             );
-          })
+        })
     );
 });
 
