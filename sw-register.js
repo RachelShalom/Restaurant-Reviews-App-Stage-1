@@ -1,16 +1,17 @@
   //register the service worker
 
-
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').then(function(reg) {
+      if (!navigator.serviceWorker.controller) { return; }
 
-        if (reg.active) {
-            console.log('Service worker active');
-        }
+      navigator.serviceWorker.register('sw.js').then(function(reg) {
 
-    }).catch(function(error) {
-        // registration failed
-        console.log('Registration failed with ' + error);
-    });
+          if (reg.active) {
+              console.log('Service worker active');
+          }
 
-}
+      }).catch(function(error) {
+          // registration failed
+          console.log('Registration failed with ' + error);
+      });
+
+  }

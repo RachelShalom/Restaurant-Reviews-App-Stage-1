@@ -1,6 +1,6 @@
 const staticCacheName = 'review-cache-v2';
 //this is all the urls to save in the cache
-var urlsToCache = ['/', '/css/styles.css','/css/responsiveStyle.css',
+var urlsToCache = ['/', '/css/styles.css', '/css/responsiveStyle.css',
     '/img/1.jpg', '/img/2.jpg',
     '/img/3.jpg', '/img/4.jpg',
     '/img/5.jpg', '/img/6.jpg',
@@ -39,16 +39,17 @@ self.addEventListener('activate', function(event) {
     );
 });
 
-//return response from the cache, if there is an error then get the resuwst from the network
+//return response from the cache, if there is an error then get the resuwst from the network.
 self.addEventListener('fetch', function(event) {
-    caches.match(event.request).then(function(response) {
-        if (response) {
-        console.log('Serve from cache', response);
-        return response;
-        
-        }else{
-        console.log('Serve as fetch', event.request);
-        return fetch(event.request);
-        }
-    });
+    event.respondWith(
+        caches.match(event.request).then(function(response) {
+            if (response) {
+                console.log('Serve from cache', response);
+                return response;
+
+            } else {
+                console.log('Serve as fetch', event.request);
+                return fetch(event.request);
+            }
+        }));
 });
