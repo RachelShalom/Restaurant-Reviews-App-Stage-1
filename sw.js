@@ -1,4 +1,4 @@
-const staticCacheName = 'review-cache-v1';
+const staticCacheName = 'review-cache-v2';
 //this is all the urls to save in the cache
 var urlsToCache = ['/', '/css/styles.css','/css/responsiveStyle.css',
     '/img/1.jpg', '/img/2.jpg',
@@ -8,11 +8,11 @@ var urlsToCache = ['/', '/css/styles.css','/css/responsiveStyle.css',
     '/img/9.jpg', '/img/10.jpg', '/js/',
     '/js/dbhelper.js', '/js/restaurant_info.js',
     '/index.html', '/restaurant.html',
-    '/data/restaurants.json', '/js/main.js',
-    'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js', 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
-    'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon.png', 'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon-2x.png',
-    'https://unpkg.com/leaflet@1.3.1/dist/images/marker-shadow.png',
-    'https://leafletjs.com/reference-1.3.0.html#marker'
+    '/data/restaurants.json', '/js/main.js'
+    // 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js', 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
+    // 'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon.png', 'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon-2x.png',
+    // 'https://unpkg.com/leaflet@1.3.1/dist/images/marker-shadow.png',
+    // 'https://leafletjs.com/reference-1.3.0.html#marker'
 
 ]; ///////////
 //open a cache whiile installing
