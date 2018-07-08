@@ -14,7 +14,7 @@ var urlsToCache = ['/', '/css/styles.css','/css/responsiveStyle.css',
     'https://unpkg.com/leaflet@1.3.1/dist/images/marker-shadow.png',
     'https://leafletjs.com/reference-1.3.0.html#marker'
 
-]; //////////
+]; ///////////
 //open a cache whiile installing
 self.addEventListener('install', function(event) {
     event.waitUntil(
